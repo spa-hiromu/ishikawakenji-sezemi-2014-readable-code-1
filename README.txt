@@ -1,11 +1,10 @@
 README.txt
 
 実行手順
-プロジェクトのルートフォルダ内のProjectフォルダに移動
-cd ~/Project
+EclipseにてルートフォルダにあるProjectを開く
 
-binフォルダにあるMain.classを実行
-cd ./bin
-java Main
+srcフォルダ内の"Main.java"ファイルを開く
+
+Eclipeのツールバーの"Run"から"Run"を実行する
 
 ->『オムライス』と出力される
