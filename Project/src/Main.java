@@ -14,9 +14,9 @@ public class Main {
 
         // ファイルを一行ずつArrayListに格納する
         ArrayList<String> loadedRecipeString = new ArrayList<String>();
-        loadedRecipeString = loadRecipeFile(recipeFilePath);
+        loadedRecipeString = loadFileEachOfLine(recipeFilePath);
 
-        // 引数の配列を一行ずつ出力
+
         if (args.length < 1) {
             printEachLineOfArrayList(loadedRecipeString);
         } else {
@@ -26,13 +26,12 @@ public class Main {
         }
     }
 
-    public static ArrayList<String> loadRecipeFile(String _recipeFilePath)
+    /** 引数文字列(_recipeFilePath)で指定されたテキストファイルを一行ずつ読み込んでArrayListに格納 */
+    public static ArrayList<String> loadFileEachOfLine(String _recipeFilePath)
     {
-        // 引数文字列(_recipeFilePath)で指定されたテキストファイルを一行ずつ読み込んでArrayListに格納
         String line;
         ArrayList<String> _loadedLineArray = new ArrayList<String>();
         BufferedReader br = null;
-
         try {
             br = new BufferedReader(new FileReader(_recipeFilePath));
             // 最後の行まで、一行ずつ読み込む
@@ -49,28 +48,37 @@ public class Main {
                 e.printStackTrace();
             }
         }
-
         return _loadedLineArray;
     }
 
-    public static void printEachLineOfArrayList(ArrayList<String> _arrayList)
+    /** レシピを一行ずつ出力する */
+    public static void printEachLineOfArrayList(ArrayList<String> recipeList)
     {
+        printUserName(recipeList);
         // 引数配列(_arrayList) の中身を一行ずつ出力する
         int recipeID = 1;
-        for (String recipeName : _arrayList) {
+        for (String recipeName : recipeList) {
             System.out.println(recipeID + ":" + recipeName);
             recipeID++;
         }
     }
 
-    public static void printEachLineOfArrayList(ArrayList<String> _arrayList, int selectedID) {
+    public static void printEachLineOfArrayList(ArrayList<String> recipeList, int selectedID) {
+        printUserName(recipeList);
         int recipeID = 1;
-        for (String recipeName : _arrayList) {
+        for (String recipeName : recipeList) {
             if (recipeID == selectedID) {
                 System.out.println(recipeID + ":" + recipeName);
             }
             recipeID++;
         }
+    }
+
+    /** ユーザ名を出力 */
+    public static void printUserName(ArrayList<String> recipeList) {
+        /** リソースの先頭をユーザ名としているので先頭だけ読んでその後は削除してレシピだけの状態にする */
+        System.out.println("ユーザ名:" + recipeList.get(0));
+        recipeList.remove(0);
     }
 
 }
