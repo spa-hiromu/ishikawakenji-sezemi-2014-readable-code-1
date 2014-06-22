@@ -1,0 +1,5 @@
+README.txt
+
+実行手順
+プロジェクトのルートフォルダ内のProjectフォルダをEclipseで開く
+Main.java を実行する
